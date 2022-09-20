@@ -1,0 +1,25 @@
+<canvas width="800" height="800"></canvas>
+<script type="text/javascript">
+	
+	var tela = document.querySelector("canvas");
+	var pincel = tela.getContext('2d');
+
+	function fazQuadrado(x,y,cor){
+	pincel.fillStyle = cor;
+	pincel.fillRect(x,y,50,50);
+	pincel.fillStroke = 'red';
+	pincel.strokeRect(x,y,50,50);
+
+	}
+
+	var x = 0;
+
+	while(x < 800){
+	fazQuadrado(x,0,'brown');
+	fazQuadrado(x,50,'brown');
+	fazQuadrado(x,100,'brown');
+	x = x + 50;
+
+	}
+
+</script>

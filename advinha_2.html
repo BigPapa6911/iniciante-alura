@@ -1,0 +1,39 @@
+<meta charset="UTF-8">
+<hr>
+<input/>
+<button>Será que você acertou?</button>
+<hr>
+<script type="text/javascript">
+	
+	function sorteia(){
+		return Math.round(Math.random() * 10);
+	}
+
+	function sorteira(quantidade) {
+		var segredos = [];
+		var numero = 1; 
+		while(numero <= quantidade){
+			segredos.push(sorteia());
+			numero++;
+		}
+		return segredos;
+	}
+
+	var input = document.querySelector("input");
+	
+	input.focus();
+
+	function verifica() {
+		if(input.value == numero ) {
+		alert("Acertou seu gae.");
+	}else{
+		alert("Errou, era " + numero + " , tenta de novo ae.");
+	}
+	input.value = "";
+	input.focus();
+	}
+
+	var button = document.querySelector("button");
+	button.onclick = verifica;
+
+</script>

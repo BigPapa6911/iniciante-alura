@@ -1,0 +1,40 @@
+<canvas width="1600" height="900"></canvas>
+
+<script>
+    //declaraçao canvas
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'white';
+    pincel.fillRect(0,0,1600,900);
+
+    //desenha circulo
+    function circulo(x,y,raio,cor){
+        //cor tem q ser em ingles
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x,y,raio,0,2*Math.PI);
+        pincel.fill();
+    }
+
+    //apaga bola anterior
+    function limpa(){
+        pincel.clearRect(0,0,1600,400);
+    }
+    //movimento
+    var x=30;
+    var direcaoX = 1;
+    function atualiza(){
+        limpa();
+        if(x+30 >=1600){
+            direcaoX = -1;
+        } else if(x-30 <=0){
+            direcaoX = 1;
+        }
+        circulo(x,30,30,'black');
+        x = x + direcaoX;
+    }
+    setInterval(atualiza,0.5);
+
+   
+    
+</script>

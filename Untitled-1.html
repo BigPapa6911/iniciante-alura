@@ -1,0 +1,53 @@
+<canvas height="900" width="1600"></canvas>
+Qual cor? <input type="color">
+
+<script>
+   
+    paleta = document.querySelector('input');
+    tela = document.querySelector("canvas");
+    pincel = tela.getContext("2d");
+
+    pincel.fillStyle = 'green';
+    pincel.fillRect(0,0,1600,900);
+
+    var raio = 10;
+    var desenha = false;
+
+    tela.oncontextmenu = cor;
+
+    function circulo(evento){
+       
+       if(desenha){
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+
+            if(evento.shiftKey && raio <=40){
+                raio = raio + 10;
+            }
+            if(evento.altKey && raio >= 10){
+                raio = raio - 5;
+            }
+
+            pincel.fillStyle = paleta.value;
+            pincel.beginPath();
+            pincel.arc(x,y,raio,0,2*3.14);
+            pincel.fill();
+            console.log(x+','+y);
+        }
+    }
+
+    tela.onmousemove = circulo;
+
+    function desenhar(){
+        desenha = true;
+    }
+
+    function naodesenha(){
+        desenha = false;
+    }
+
+    tela.onmousedown = desenhar;
+    tela.onmouseup = naodesenha;
+
+  
+</script>

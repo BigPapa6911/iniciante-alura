@@ -1,0 +1,69 @@
+<canvas width="1600" height="900"> </canvas>
+<script>
+    // declaraçoes da tela
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'black';
+    pincel.fillRect(0,0,1600,900);
+    // fazer o circulo
+    function circulo(x,y,raio,cor){
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x,y,raio,0,2*Math.PI);
+        pincel.fill();
+
+    }
+    // limpar anterior
+    function limpa(){
+
+        pincel.clearRect(0,0,1600,900);
+
+    }
+    //alvo
+    var raio = 20;
+    function alvo(x,y){
+      
+        circulo(x,y,raio + 40,'green');
+        circulo(x,y,raio + 20,'black');
+        circulo(x,y,raio,'green');
+
+    }
+    //posiçao
+    function aleatoria(maximo){
+
+        return Math.floor(Math.random() * maximo);
+
+    }
+
+        var xPosicao = aleatoria(1600);
+        var yPosicao = aleatoria(900);
+    //local do alvo
+    function atualiza(){
+
+        limpa()
+        xPosicao = aleatoria(1600);
+        yPosicao = aleatoria(900);
+        alvo(xPosicao ,yPosicao);
+
+    }
+
+    setInterval(atualiza, 1000);
+
+    function atira(evento){
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        if( x > xPosicao - raio 
+            && x < xPosicao + raio
+            && y < yPosicao + raio
+            && y > yPosicao - raio){
+
+                alert('Acertou!');
+        }
+
+    }
+
+    tela.onclick = atira;
+</script>

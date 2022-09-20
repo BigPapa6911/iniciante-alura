@@ -1,0 +1,41 @@
+<meta charset="UTF-8">
+
+<script type="text/javascript">
+	
+	function pulaLinha() {
+		
+		document.write("<br>");
+		document.write("<br>");
+
+	};
+
+	function mostra(frase){
+
+		document.write(frase);
+		pulaLinha();
+
+	};
+
+	function calculaImc(altura , peso ) {
+
+		return peso / (altura * altura) ;
+
+	}
+	var nome = prompt("Qual o seu nome");
+	var alturaInformada = prompt("Qual sua altura " + nome + "?");
+	var pesoInformado = prompt("Você pesa quanto " + nome + "?");
+	var IMC = calculaImc(alturaInformada, pesoInformado);
+
+	mostra(nome + " seu IMC é " + IMC);
+	
+	if(IMC < 18.5) {
+		mostra("Seu imc é de um adulto com peso baixo.");
+	}
+	
+	if(IMC > 30) {
+		mostra("Seu imc é de um adulto com obesidade.");
+	}
+	if(IMC >= 18.5 && IMC <= 30) {
+		mostra("Seu imc esta excelente.");	
+	}
+</script>
